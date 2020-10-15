@@ -179,13 +179,19 @@ public class MobileNumberPlugin implements FlutterPlugin, ActivityAware, MethodC
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
             for (SubscriptionInfo subscriptionInfo : getSubscriptions()) {
                 SimCard simCard = new SimCard(telephonyManager, subscriptionInfo);
-                simJsonArray.put(simCard.toJSON());
+                if (simCard != null) {
+                    if (simCard.isNumberValid()) {
+                        simJsonArray.put(simCard.toJSON());
+                    }
+                }
             }
         }
         if (simJsonArray.length()==0) {
             SimCard simCard = getSingleSimCard();
             if (simCard != null) {
-                simJsonArray.put(simCard.toJSON());
+                if (simCard.isNumberValid()) {
+                    simJsonArray.put(simCard.toJSON());
+                }
             }
         }
 

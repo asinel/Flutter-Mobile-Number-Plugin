@@ -66,6 +66,37 @@ public class SimCard {
         return json;
 
     }
+
+    public String getCarrierName() {
+        return carrierName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public int getSlotIndex() {
+        return slotIndex;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getCountryIso() {
+        return countryIso;
+    }
+
+    public String getCountryPhonePrefix() {
+        return countryPhonePrefix;
+    }
+    public boolean isNumberValid(){
+        if (getNumber() == null){
+            return false;
+        } else {
+            return !getNumber().isEmpty();
+        }
+    }
 }
 
 
